@@ -33,9 +33,7 @@ jspm_packages/
 /OrderService/node_modules/
 /PaymentService/node_modules/
 
-# Docker files
-Dockerfile
-Docker-compose.override.yml
+
 
 # Environment variables
 .env
