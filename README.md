@@ -15,6 +15,14 @@ The **OrderService** handles operations related to user orders, such as creating
 - **Framework**: Express.js
 - **Database**: SQLite
 
+### Directory Structure
+```
+OrderService/
+├── app.js         # Main server file
+├── database.js    # SQLite database operations
+├── package.json   # Node.js dependencies and scripts
+```
+
 ### Endpoints
 
 #### 1. POST `/orders`
@@ -92,6 +100,16 @@ The **ProductService** manages products, including retrieving all products, addi
 - **Language**: JavaScript (Node.js)
 - **Framework**: Express.js
 - **Database**: MongoDB
+
+### Directory Structure
+```
+ProductService/
+├── index.js         # Main server file
+├── router.js        # Defines routes for product-related operations
+├── controller.js    # Implements logic for product operations
+├── model.js         # MongoDB schema for products
+├── package.json     # Node.js dependencies and scripts
+```
 
 ### Endpoints
 
@@ -172,6 +190,16 @@ The **UserService** manages user accounts, including registration and login func
 - **Language**: JavaScript (Node.js)
 - **Framework**: Express.js
 - **Database**: Supabase (PostgreSQL)
+
+### Directory Structure
+```
+UserService/
+├── index.js           # Main server file
+├── userRoutes.js      # Defines user-related routes
+├── userController.js  # Implements logic for user operations
+├── db.js              # Supabase database connection
+├── package.json       # Node.js dependencies and scripts
+```
 
 ### Endpoints
 
