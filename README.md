@@ -20,9 +20,13 @@ The **OrderService** handles operations related to user orders, such as creating
 - **GET `/orders/:userId`**: Retrieve all orders for a user.
 - **PUT `/orders/:orderId/pay`**: Update the order status to "Paid".
 
-### Setup
-- Install dependencies: `npm install`
-- Start the service: `npm start` (Runs on port 5003 by default).
+### Directory Structure
+```
+OrderService/
+├── app.js         # Main server file
+├── database.js    # SQLite database operations
+├── package.json   # Node.js dependencies and scripts
+```
 
 ---
 
@@ -41,10 +45,15 @@ The **ProductService** manages products, including retrieving all products, addi
 - **GET `/api/product/:_id`**: Retrieve a product by ID.
 - **POST `/api/products`**: Add a new product.
 
-### Setup
-- Environment variables required: `MONGO_URI`, `SERVER_PORT`.
-- Install dependencies: `npm install`
-- Start the service: `npm start` (Runs on the port specified in `.env`).
+### Directory Structure
+```
+ProductService/
+├── index.js         # Main server file
+├── router.js        # Defines routes for product-related operations
+├── controller.js    # Implements logic for product operations
+├── model.js         # MongoDB schema for products
+├── package.json     # Node.js dependencies and scripts
+```
 
 ---
 
@@ -62,10 +71,15 @@ The **UserService** manages user accounts, including registration and login func
 - **POST `/user/register`**: Register a new user.
 - **POST `/user/login`**: Authenticate a user.
 
-### Setup
-- Environment variables required: `SUPABASE_URL`, `SUPABASE_KEY`, `PORT`.
-- Install dependencies: `npm install`
-- Start the service: `npm start` (Runs on the port specified in `.env`).
+### Directory Structure
+```
+UserService/
+├── index.js           # Main server file
+├── userRoutes.js      # Defines user-related routes
+├── userController.js  # Implements logic for user operations
+├── db.js              # Supabase database connection
+├── package.json       # Node.js dependencies and scripts
+```
 
 ---
 
@@ -73,17 +87,9 @@ The **UserService** manages user accounts, including registration and login func
 - Ensure that the required databases and environment variables are properly configured before starting each service.
 - Use a REST client like Postman to test API endpoints.
 
-### Directory Structure
-Each service has its own directory with the following structure:
-```
-ServiceName/
-├── app/index.js
-├── controller/database.js
-├── model.js (if applicable)
-├── routes.js (if applicable)
-├── package.json
-```
-
 ---
 
-**Author**: [Your Name]
+## Author Details
+- **Name**: Muhammad Osama
+- **University**: Fast - NUCES Karachi Campus
+- **ID**: 23K-7800
