@@ -30,5 +30,22 @@ app.get('/orders/:userId', async (req, res) => {
   }
 });
 
+app.put('/orders/:orderId/pay', async (req, res) => {
+  const { orderId } = req.params;
+
+  try {
+    const result = await db.updateOrderStatus(orderId, 'Paid');
+    if (result) {
+      res.status(200).json({ message: 'Order status updated to Paid' });
+    } else {
+      res.status(404).json({ error: 'Order not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to update order status' });
+  }
+});
+
+
 const PORT = process.env.PORT || 5003;
 app.listen(PORT, () => console.log(`Order Service running on port ${PORT}`));
