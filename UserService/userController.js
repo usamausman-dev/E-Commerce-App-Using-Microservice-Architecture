@@ -14,9 +14,17 @@ const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const { data, error } = await supabase.from('users').insert([{ name: name, password: hashedPassword, email: email }]);
 
-        res.status(201).json({
-            message: 'User registered successfully.', user: data , error
-        });
+        if (error) {
+            throw error
+        }
+
+        else {
+            res.status(201).json({
+                message: 'User registered successfully.', user: data
+            });
+        }
+
+
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -34,21 +42,25 @@ const loginUser = async (req, res) => {
         // Find the user by email
         const { data, error } = await supabase
             .from('users')
-            .select('Password, UserID, name')
-            .eq('Email', email)
+            .select('password, id, name') // Ensure column names match the database
+            .eq('email', email)              // Check casing of the 'Email' column
             .single();
+
+        console.log('Supabase Data:', data);
+  
+
 
         if (error || !data) {
             return res.status(400).json({ error: 'Invalid credentials.' });
         }
 
         // Compare the password
-        const validPassword = await bcrypt.compare(password, data.Password);
+        const validPassword = await bcrypt.compare(password, data.password);
         if (!validPassword) {
             return res.status(400).json({ error: 'Invalid credentials.' });
         }
 
-        res.status(200).json({ message: 'Login successful.', user: { UserID: data.UserID, name: data.name } });
+        res.status(200).json({ message: 'Login successful.', user: { id: data.id, name: data.name } });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
